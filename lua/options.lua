@@ -7,14 +7,15 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
--- Enable mouse mode
-vim.o.mouse = 'a'
+-- Disable mouse mode
+vim.o.mouse = ''
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+--vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -38,5 +39,11 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Use unix line endings by default
+vim.o.ffs=unix,dos,mac
+
+-- Set language to English
+vim.api.nvim_exec('language en_US', true)
 
 -- vim: ts=2 sts=2 sw=2 et
