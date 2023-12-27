@@ -70,7 +70,10 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = { filetypes = { 'python' } },  -- Python language server
+  ruff_lsp = { filetypes = { 'python' } }, -- Python formatting, linting
+  taplo = {},                              -- TOML
+  lemminx = {},                            -- XML
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -107,6 +110,11 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
+  end,
+  ['ruff_lsp'] = function()
+    require('lspconfig').ruff_lsp.setup({
+      on_attach = function(client) client.server_capabilities.hoverProvider = false end,
+    })
   end,
 }
 
