@@ -61,7 +61,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- Use unix line endings by default
-vim.o.ffs=unix,dos,mac
+vim.o.ffs='unix,dos,mac'
 
 -- Set language to English
 vim.api.nvim_exec('language en_US', true)
