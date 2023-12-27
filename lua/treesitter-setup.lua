@@ -6,8 +6,15 @@ vim.defer_fn(function()
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = true,
+
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
+    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
     auto_install = false,
+
+    -- List of parsers to ignore installing (or "all")
+    ignore_install = {},
 
     highlight = { enable = true },
     indent = { enable = true },
