@@ -20,6 +20,26 @@ vim.o.mouse = ''
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Tabs
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+
+-- Show placeholders for these non-visible-characters.
+vim.o.listchars = "tab:>-,trail:·,extends:>,precedes:<"
+vim.o.list = true
+
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.xml", "*.xsd", "*.xsl", "*.html", "*.htm"},
+  command = "setlocal shiftwidth=2 tabstop=2",
+})
+
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.py"},
+  command = "setlocal autoindent smarttab",
+})
+
 -- Save undo history
 vim.o.undofile = true
 
