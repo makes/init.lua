@@ -25,4 +25,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- [[ Clear search highlight on double esc ]]
+vim.keymap.set('n', '<esc><esc>', '<Cmd>nohls<CR>', { silent = true })
+
 -- vim: ts=2 sts=2 sw=2 et
