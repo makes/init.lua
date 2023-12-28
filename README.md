@@ -1,25 +1,27 @@
 # kickstart-modular.nvim
 
-https://github.com/kdheepak/kickstart.nvim/assets/1813121/f3ff9a2b-c31f-44df-a4fa-8a0d7b17cf7b
 
 ### Introduction
 
-*This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration.*
-
-A starting point for Neovim that is:
-
-* Small
-* Documented
-* Modular
-
-This repo is meant to be used by **YOU** to begin your Neovim journey; remove the things you don't use and add what you miss.
-
-Kickstart.nvim targets *only* the latest ['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest ['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim. If you are experiencing issues, please make sure you have the latest versions.
-
-Distribution Alternatives:
-- [LazyVim](https://www.lazyvim.org/): A delightful distribution maintained by @folke (the author of lazy.nvim, the package manager used here)
+_This is a fork of [dam9000/kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim), a modular version of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)._
 
 ### Installation
+
+```
+winget install BurntSushi.ripgrep.MSVC
+winget install sharkdp.fd
+winget install OpenJS.NodeJS
+```
+
+```
+git clone git@github.com:makes/init.lua.git makes.init.lua
+New-Item -Path $env:LOCALAPPDATA\nvim -ItemType SymbolicLink -Value $(Resolve-Path makes.init.lua)
+```
+
+```
+git remote add upstream git@github.com:dam9000/kickstart-modular.nvim.git
+git config --global merge.ours.driver true
+```
 
 > **NOTE** 
 > [Backup](#FAQ) your previous configuration (if any exists)
