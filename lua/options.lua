@@ -64,6 +64,8 @@ vim.o.termguicolors = true
 vim.o.ffs='unix,dos,mac'
 
 -- Set language to English
-vim.api.nvim_exec('language en_US', true)
+if vim.g.os == "Windows" then
+  vim.api.nvim_exec('language en_US.UTF-8', true)
+end
 
 -- vim: ts=2 sts=2 sw=2 et

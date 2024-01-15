@@ -38,6 +38,17 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
 
+-- Detect os, store result in vim.g.os
+if vim.fn.exists('g:os') == 0 then
+    local is_windows = vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") == 1
+    if is_windows then
+        vim.g.os = "Windows"
+    else
+        local uname_output = vim.fn.system('uname')
+        vim.g.os = string.gsub(uname_output, '\n', '')
+    end
+end
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
