@@ -87,7 +87,9 @@ local servers = {
   ruff_lsp = { filetypes = { 'python' } }, -- Python formatting, linting
   taplo = {},                              -- TOML
   lemminx = {},                            -- XML
-  powershell_es = {},
+  bashls = {},
+  r_language_server = {},
+  powershell_es = { filetypes = { "ps1", "psm1", "psd1" } },
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -138,7 +140,6 @@ mason_lspconfig.setup_handlers {
       },
     }
   end,
-
 }
 
 -- vim: ts=2 sts=2 sw=2 et
