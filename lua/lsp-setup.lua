@@ -87,10 +87,7 @@ local servers = {
   ruff_lsp = { filetypes = { 'python' } }, -- Python formatting, linting
   taplo = {},                              -- TOML
   lemminx = {},                            -- XML
-  -- powershell_es = {
-  --   filetypes = { 'ps1', 'psm1', 'psd1' },
-  --   bundle_path = '~/AppData/Local/nvim-data/lsp_servers/powershell_es',
-  -- },
+  powershell_es = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -133,6 +130,15 @@ mason_lspconfig.setup_handlers {
       on_attach = function(client) client.server_capabilities.hoverProvider = false end,
     })
   end,
+  ['powershell_es'] = function()
+    require('lspconfig').powershell_es.setup {
+      bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
+      init_options = {
+        enableProfileLoading = false,
+      },
+    }
+  end,
+
 }
 
 -- vim: ts=2 sts=2 sw=2 et
