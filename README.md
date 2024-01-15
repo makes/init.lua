@@ -23,8 +23,31 @@ git remote add upstream git@github.com:dam9000/kickstart-modular.nvim.git
 git config --global merge.ours.driver true
 ```
 
-> **NOTE** 
-> [Backup](#FAQ) your previous configuration (if any exists)
+### LSP quirks
+
+__`bashls`__
+
+Have [shellcheck](https://github.com/koalaman/shellcheck) executable in path.
+
+__`r_language_server`__
+
+It could not find the `languageserver` R package installed in home directory
+
+```
+.libPaths() = $HOME\AppData\Local\Programs\R\R-4.3.2\library
+```
+
+The solution was to copy the package to `AppData\Local\nvim-data\mason\packages\r-languageserver\build`.
+
+__`powershell_es`__
+
+In Windows, the LSP won't work without this in its lspconfig setup:
+
+```
+init_options = {
+  enableProfileLoading = false,
+}
+```
 
 Requirements:
 * Make sure to review the readmes of the plugins if you are experiencing errors. In particular:
