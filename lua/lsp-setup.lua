@@ -63,7 +63,13 @@ require('which-key').register({
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require('mason').setup()
+require('mason').setup({
+  providers = {
+    "mason.providers.client",
+    "mason.providers.registry-api" -- This is the default provider. You can still include it here if you want, as a fallback to the client provider.
+  },
+  -- log_level = vim.log.levels.DEBUG
+})
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers
@@ -81,6 +87,9 @@ local servers = {
   ruff_lsp = { filetypes = { 'python' } }, -- Python formatting, linting
   taplo = {},                              -- TOML
   lemminx = {},                            -- XML
+  bashls = {},
+  r_language_server = {},
+  powershell_es = { filetypes = { "ps1", "psm1", "psd1" } },
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -122,6 +131,14 @@ mason_lspconfig.setup_handlers {
     require('lspconfig').ruff_lsp.setup({
       on_attach = function(client) client.server_capabilities.hoverProvider = false end,
     })
+  end,
+  ['powershell_es'] = function()
+    require('lspconfig').powershell_es.setup {
+      bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
+      init_options = {
+        enableProfileLoading = false,
+      },
+    }
   end,
 }
 
