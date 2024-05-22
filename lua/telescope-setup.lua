@@ -2,6 +2,7 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    initial_mode = "insert",
     mappings = {
       i = {
         ['<C-u>'] = false,
