@@ -8,6 +8,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+vim.keymap.set('n', '<leader>bn', ":bnext<enter>", { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>bp', ":bprev<enter>", { desc = 'Previous buffer' })
+vim.keymap.set('n', '<leader>bd', ":bdelete<enter>", { desc = 'Delete buffer' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', 'öd', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', 'äd', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
