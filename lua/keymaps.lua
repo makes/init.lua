@@ -10,6 +10,9 @@ vim.keymap.set('n', '<leader>bn', ":bnext<enter>", { desc = 'Next buffer' })
 vim.keymap.set('n', '<leader>bp', ":bprev<enter>", { desc = 'Previous buffer' })
 vim.keymap.set('n', '<leader>bd', ":bdelete<enter>", { desc = 'Delete buffer' })
 
+-- Alt-v for visual block mode instead of Ctrl-v
+vim.keymap.set('n', '<A-v>', '<C-v>', { noremap = true })
+
 -- Cycle the visibility of the gutter (sign column) and line numbers
 local linenum_state = {
   number = true,
