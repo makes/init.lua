@@ -8,7 +8,7 @@ return {
       enabled = not vim.g.ai_cmp,
       auto_trigger = true,
       keymap = {
-        accept = "<Tab>", -- false when handled by nvim-cmp / blink.cmp
+        accept = "<right>", -- false when handled by nvim-cmp / blink.cmp
         next = "<M-ä>",
         prev = "<M-ö>",
       },

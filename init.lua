@@ -96,7 +96,7 @@ if vim.fn.exists('g:os') == 0 then
 end
 
 -- Point legacy Python provider to dedicated venv
-vim.g.python3_host_prog = "~/.local/bin/python"
+vim.g.python3_host_prog = "~/.local/share/python-venv/bin/python"
 
 -- Set <space> as the leader key
 -- See `:help mapleader`

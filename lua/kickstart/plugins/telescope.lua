@@ -25,9 +25,9 @@ return {
         end,
         cond = function()
           if vim.g.os == 'Windows' then
-            return vim.fn.executable('cmake') == 1
+            return vim.fn.executable 'cmake' == 1
           else
-            return vim.fn.executable('make') == 1
+            return vim.fn.executable 'make' == 1
           end
         end,
       },
@@ -67,7 +67,11 @@ return {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          buffers = {
+            initial_mode = 'normal',
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),

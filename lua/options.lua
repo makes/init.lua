@@ -15,6 +15,10 @@ vim.o.relativenumber = true
 -- Disable mouse mode, enabling can be useful for resizing splits for example!
 vim.o.mouse = ''
 
+-- Disable select mode
+vim.opt.selectmode:remove("mouse")
+vim.opt.selectmode:remove("key")
+
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
@@ -22,9 +26,9 @@ vim.o.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   vim.o.clipboard = 'unnamedplus'
+-- end)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -34,6 +38,16 @@ vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+
+-- Disable auto comment in the next line
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove({ "o" }) --continue comments after o or O
+    --vim.opt.formatoptions:remove({ "r" }) -- enter inside commented line
+    --vim.opt.formatoptions:remove({ "c" }) -- auto-wrap comments using textwidth
+  end,
+})
 
 -- Show placeholders for these non-visible-characters.
 vim.o.listchars = "tab:>-,trail:·,extends:>,precedes:<"
@@ -82,6 +96,8 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
+
+vim.o.guicursor = 'n-v-c-sm:block-blinkon500-blinkoff500,i-ci-ve:ver25-blinkon500-blinkoff500,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor'
 
 -- Show which line your cursor is on
 vim.o.cursorline = true
